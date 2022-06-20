@@ -1,0 +1,52 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace= "~{fragmentos :: head('Lista de Colaboradores')}"></head>
+<body>
+<header th:replace="~{fragmentos :: header('Lista de Colaboradores')}"></header>
+	<div class="container">
+		
+			<div class="row">
+				<div class="col-12">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">CPF</th>
+								<th scope="col">Nome</th>
+								<th scope="col"> </th>
+								<th scope="col"> </th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each= "colaborador : ${colaboradores}">
+								<th class="col-1" scope="row" th:text= ${colaborador.cpf}>05735008439</th>
+								<td class="col-1" th:text= ${colaborador.nome}>Batman </td>
+								 <td class="col-1"><a th:href="@{/colaboradores/{colaboradorcpf}(colaboradorcpf = ${colaborador.cpf})}">Detalhes</a></td>
+								<td class="col-1"><a 
+									th:href="@{/colaboradores/{colaboradorcpf}/edit(colaboradorcpf = ${colaborador.cpf})}">Editar</a></td>
+								<td class="col-1"><a th:href="@{/colaboradores/{colaboradorcpf}/delete(colaboradorcpf = ${colaborador.cpf})}">Deletar</a></td>
+							</tr>
+						
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<a href="/colaboradores/new">Novo Colaborador</a>
+			</div>
+		
+	</div>
+
+
+
+	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+
+</body>
+</html>
